@@ -1,0 +1,109 @@
+Ctrl + Alt + T - открытие терминала
+
+Что такое APT?
+
+name.title() - Выделяет слова и делает их с большой буквы
+upper() - ALEX
+lower() - alex
+
+
+parentheses - круглые скобки
+
+name = "alex"
+greeting = f"Hello, {name}"
+name = "tank"
+print(greeting) // Hello, alex
+
+Не забываем f перед строкой
+
+\t - tab
+\n - new line  
+
+lstrip() - deletes spaces from left // rstrip(), strip()
+
+removeprefix() - deletes prefix once, if exists
+removesuffix()
+
+stubborn - упрямый
+assign - присваивать
+
+////////////////////////////////////////////////////////////////////////////////
+
+10 ** 6 (10 в степени 6)
+
+x = 14_000_000_000 // valid variable
+
+x, y, z = 0, 0, 0
+
+No constants (If you want, write the variable with uppercase letters (VALUE, NUMMAX, ...))
+
+//////////////////////////////////////////////////////////////////////////
+
+# bla bla bla // comment
+
+sparcely - редко
+explicit - явный, точный
+intricacies - путаница
+
+////////////////////////////////////////////////////////////////////////////
+
+list = ['1', '1', '1']
+
+list[-1]     # the last element
+
+list.append(x)    # to add in the end
+
+list.insert(pos, x)   # to add in the given position
+list.insert(1, "0")   # [1, 0, 1, 1]
+
+del list[pos]   # deletes
+
+val = list.pop()   # deletes the last elem and assign the value to val
+list.pop(ind)   # the same but not from end
+list.remove('1')  # removes the first '1' in list
+remove only works if the value exists, otherwise error
+
+list.sort()
+sorted(list)  # doesn't change the list
+list.sort(reverse=true)
+list.reverse()
+len(list)
+
+adjust = устанавливать
+retrieve = извлекать
+indent = отступ
+
+/////////////////////////////////////////
+
+for x in y:
+    bla()
+
+
+numbers = list(range(1, 6)) [1, 2, 3, 4, 5]
+
+inclusive - включительно
+
+min(list), max(list), sum(list) # commands to work with number list
+
+squares = [value ** 2 for value in range(1, 5)]   # [1, 4, 9, 16]
+
+list = [1, 2, 3, 4, 5]
+list[1:3]    #  [2, 3]
+list[1:]     #  [2, 3, 4, 5]
+
+для присваивания пишем 
+list2 = list1[:]  #  иначе будет как 2 указателя на 1 обьект
+
+tuple = constant list
+changing possible only by complete reassigning of the tuple
+
+tuple with 1 element should be defined like
+tup = (x,)
+
+ctrl + /    # comments the whole block
+
+ctrl + K, Ctrl + O    # opens the files
+
+r/learnpython   # to read for beginners
+
+ctrl + shift + tab   # переключаться между окнами в VS Code
