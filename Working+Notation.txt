@@ -107,3 +107,80 @@ ctrl + K, Ctrl + O    # opens the files
 r/learnpython   # to read for beginners
 
 ctrl + shift + tab   # переключаться между окнами в VS Code
+Alt + '1', '2', '3' # тоже переключаться но быстрее
+
+В чем заключается разница между git pull и git fetch?
+
+Команда git fetch загружает удаленное содержимое, но не изменяет состояние локального репозитория, 
+в то время как git pull загружает удаленное содержимое и сразу пытается 
+изменить состояние локального репозитория, чтобы оно соответствовало этому содержимому.
+
+git init  # makes a new git point of working
+
+deployment - размещение
+
+https://explainshell.com/    # helps to understand the git commands
+
+2 conditions:
+if x > 10 and(or) x < 15:
+    ...
+
+checking whether variable is in the list:
+list = ['ana', 'conda']
+'ana' in list
+
+if, elif, else 
+
+if list:    # true, if the list is not empty
+    ...
+
+///////////////////////////////////////////////////////////
+
+example of dictionary:
+alien_0 = {'color': 'green', "points": 5} 
+
+to nest - вить гнездо?
+
+adding works like maps in c++
+
+dict.get(key, variable if val doesn't exist)
+
+for k, v in dict.items():  # goes through all keys + vals
+    ...
+
+keys()    # goes through all keys
+values()  # obvious
+
+list in dictionaries (example):
+pizza = {
+ 'crust': 'thick',
+ 'toppings': ['mushrooms', 'extra cheese'],
+ }
+
+set(list)   # gives only unique values
+
+example of set:
+set = {'1', '2', '2', '1'}   # gives '1', '2'
+
+nesting - lists in lists
+
+range(x)  # 0, 1, 2, ..., x-1
+
+
+dictionary in dictionary:
+users = {
+ 'aeinstein': {
+ 'first': 'albert',
+ 'last': 'einstein',
+ 'location': 'princeton',
+ },
+ 'mcurie': {
+ 'first': 'marie',
+ 'last': 'curie',
+ 'location': 'paris',
+ },
+ }
+
+ //////////////////////////////////////////////////////////
+
+int(str)  # переводит строку и инт
