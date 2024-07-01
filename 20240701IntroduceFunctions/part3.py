@@ -26,9 +26,12 @@ print(list)
 #                             field='physics')
 # print(user_profile) 
 
+from part1 import describe_pet
 
 def func(*food):
     print(f"You have added {len(food)} toppings")
 
 func('ketchup', 'runt', 'eggs')
 func('nothing')
+
+describe_pet()

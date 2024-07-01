@@ -255,3 +255,19 @@ user_profile = build_profile('albert', 'einstein',
 print(user_profile)
 
 **kwarg - dictionary    # keyword argument
+
+to connent other files(modules), use 
+import file_name    # without py
+file_name.func(args)     # how to start a function
+
+if you don't need the whole file but the specific functions, use:
+from module import func1, func2, func3
+
+alias - "клички, сокращения"
+example of alias in import:
+from module import func_1 as f_1
+
+alias can also be used for the name of modules
+
+if we write:
+from file_name import *   # you won't need to write the name of the file in functions (should not use in big projects)
