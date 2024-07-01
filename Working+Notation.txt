@@ -188,3 +188,18 @@ int(str)  # переводит строку и инт
 
 break    # stops the loop
 continue  # obvious
+
+///////////////////////////////////////////////////////////
+
+Multiline comments look like this:
+"""
+fsdsdf
+dvs
+"""
+
+Example of function:
+
+def greet_user():     # named body
+ """Display a simple greeting."""  #  named docstring
+ print("Hello!")
+greet_user()
