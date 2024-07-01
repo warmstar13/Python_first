@@ -203,3 +203,55 @@ def greet_user():     # named body
  """Display a simple greeting."""  #  named docstring
  print("Hello!")
 greet_user()
+
+in the parentheses there is parameter
+the value is named argument
+
+alt + shift + Up(Down)    # moves the selected block up(down)
+
+
+Example of keyboard argument:
+
+def describe_pet(animal_type, pet_name):
+    """Display information about a pet."""
+    print(f"\nI have a {animal_type}.")
+    print(f"My {animal_type}'s name is {pet_name.title()}.")
+describe_pet(animal_type='hamster', pet_name='harry')
+
+can't mix keyboard argument with positional argument
+
+can put default values:
+def describe_pet(pet_name, animal_type='dog'):
+
+default values must be placed from right to left
+
+return works normally
+
+every change with the list in the function are permanent, unlike the number
+Неизменяемые объекты (Immutable): Такие как int, float, str, tuple и т.д. При попытке изменить значение этих объектов создается новый объект.
+Изменяемые объекты (Mutable): Такие как list, dict, set и т.д. Эти объекты можно изменять напрямую, не создавая новый объект.
+
+to prevent from modifying we should write:
+function_name(list_name[:])
+
+example of arbitrary number of arguments
+def make_pizza(*toppings):
+ """Print the list of toppings that have been requested."""
+ print(toppings)
+
+ mixing positional and arbitrary arguments:
+ def make_pizza(size, *toppings):
+
+
+example of arbitrary keyboard numbers:
+def build_profile(first, last, **user_info):
+    """Build a dictionary containing everything we know about a user."""
+    user_info['first_name'] = first
+    user_info['last_name'] = last
+    return user_info
+user_profile = build_profile('albert', 'einstein',
+                            location='princeton',
+                            field='physics')
+print(user_profile)
+
+**kwarg - dictionary    # keyword argument
