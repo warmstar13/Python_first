@@ -314,3 +314,14 @@ you do not need to import the parent class separately.
 The inheritance chain in Python ensures that the child class has access to the parent class's methods.
 
 https://pymotw.com/3/     # contains the information about the most part of standart libraries
+
+///////////////////////////////////////////////////////////////////////////
+
+robust - крепкий
+
+how to read from the text file:
+
+from pathlib import Path
+
+path = Path('pi_digits.txt')
+contents = path.read_text()
