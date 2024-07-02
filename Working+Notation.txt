@@ -271,3 +271,46 @@ alias can also be used for the name of modules
 
 if we write:
 from file_name import *   # you won't need to write the name of the file in functions (should not use in big projects)
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+Удобные комбинации клавиш chrome
+https://support.google.com/chrome/answer/157179?hl=ru-ru&co=GENIE.Platform%3DDesktop#zippy=%2C%D1%81%D0%BE%D1%87%D0%B5%D1%82%D0%B0%D0%BD%D0%B8%D1%8F-%D0%BA%D0%BB%D0%B0%D0%B2%D0%B8%D1%88-%D0%B4%D0%BB%D1%8F-%D0%B2%D0%BA%D0%BB%D0%B0%D0%B4%D0%BE%D0%BA-%D0%B8-%D0%BE%D0%BA%D0%BE%D0%BD%2C%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%B8-google-chrome%2C%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D1%8F-%D0%B2-%D0%B0%D0%B4%D1%80%D0%B5%D1%81%D0%BD%D0%BE%D0%B9-%D1%81%D1%82%D1%80%D0%BE%D0%BA%D0%B5
+
+instantiation - создание экземпляра
+object - class result
+creating object = instantiation
+instance - example of an class
+object is not just a class, it could be a string, a decimal, float, ...
+
+classes should be named with capital letters
+attributes = variables in classes
+
+we can access the class attributes by:
+variable.attribute
+
+inheritance - наследование
+
+super()     # lets use function from parent class
+example:
+class ElectricCar(Car):
+
+    def __init__(self, make, model, year):
+
+    """Initialize attributes of the parent class."""
+        super().__init__(make, model, year)
+
+superclass = parent class
+subclass = child class
+
+overriding is simple
+
+uncluttered = "незагроможденный"
+ 
+classes are imported just like functions
+
+If you are using the parent class's methods through an instance of the child class, 
+you do not need to import the parent class separately. 
+The inheritance chain in Python ensures that the child class has access to the parent class's methods.
+
+https://pymotw.com/3/     # contains the information about the most part of standart libraries
