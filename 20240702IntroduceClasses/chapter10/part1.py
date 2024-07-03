@@ -1,5 +1,7 @@
 from pathlib import Path
 
-path = Path('text.txt')
+curpath = Path(__file__).parent
+path = curpath / 'new_text.txt'
 text = path.read_text()
 print(text)
+print(type(text))
