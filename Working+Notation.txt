@@ -332,3 +332,8 @@ string[x:y]
 if str in big_str:     # works as find
 
 str.replace(str1, str2)    # gives new string, but doesn't change the current string
+
+as we have .read_text(), we also have write_text()
+Python can write only strings in txt, we should change the numeric data by str()
+
+path.parent    # should be written without parentheses
