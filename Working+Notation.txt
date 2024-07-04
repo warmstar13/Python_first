@@ -325,3 +325,10 @@ from pathlib import Path
 
 path = Path('pi_digits.txt')
 contents = path.read_text()
+
+in string as in list we can write:
+string[x:y]
+
+if str in big_str:     # works as find
+
+str.replace(str1, str2)    # gives new string, but doesn't change the current string
