@@ -337,3 +337,41 @@ as we have .read_text(), we also have write_text()
 Python can write only strings in txt, we should change the numeric data by str()
 
 path.parent    # should be written without parentheses
+
+halt - остановка
+
+/////////////////////////////////////////////////////////////////////////
+
+exceptions looks like:
+try:
+    ...
+except exception_name:
+    ...
+
+ZeroDivisionError     #  5/0
+FileNotFoundError     #  can't find the file (maybe using pathlib)
+
+We can also add the block else:
+
+try:
+    answer = int(first_number) / int(second_number)
+except ZeroDivisionError:
+    print("You can't divide by 0!")
+else:
+    print(answer)
+
+string.split(separator)     # by default any whitespace
+
+pass    # skips smth. Like a commands, that does nothing
+
+placeholder = a significant zero in the decimal representation of a number
+
+
+json = Javascript object notation
+
+import json
+str = json.dumps(variable)    #  makes str look like variable
+variable = json.loads(str)    #  getting variable from string
+path.exists()    # checks if the path exists
+
+compartmentalization - разделение
