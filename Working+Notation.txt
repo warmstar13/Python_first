@@ -375,3 +375,13 @@ variable = json.loads(str)    #  getting variable from string
 path.exists()    # checks if the path exists
 
 compartmentalization - разделение
+immensely - безмерно
+
+//////////////////////////////////////////////////////////////////////////////////
+
+IndentationError   # ошибка с отступами 
+
+pytest    # проверяет все условия assert
+Important: pytest checks only functions that start or end with test_...(_test)
+
+neatly = четко, опрятно
