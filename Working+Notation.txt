@@ -385,3 +385,27 @@ pytest    # проверяет все условия assert
 Important: pytest checks only functions that start or end with test_...(_test)
 
 neatly = четко, опрятно
+
+we can write:
+pytest path_name
+
+fixture = приспособление
+fixture helps to not to duplicate the Code
+
+to use it we should write:
+
+import pytest
+...
+@pytest.fixture
+def repeatable_func():
+    ...
+    return x
+
+def test_for_single(repeatable_func):
+    ...
+
+def test_for_double(repeatable_func):
+    ...
+
+
+@pytest.fixture(scope="module")   # creates one instance for all tests
