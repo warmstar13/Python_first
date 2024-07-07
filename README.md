@@ -9,3 +9,5 @@ My first goal will be to fully explore the book "Python crash course, 3rd editio
 - Intermediate Python Courses
 - Read the book about Patterns
 - API Course
+- Clean code course?
+- Learn about frameworks
