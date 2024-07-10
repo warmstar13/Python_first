@@ -409,3 +409,27 @@ def test_for_double(repeatable_func):
 
 
 @pytest.fixture(scope="module")   # creates one instance for all tests
+
+/////////////////////////////////////////////////////////
+
+pygame.init()    # activates the background settings
+
+pygame.display.set_caption(str)   # gives the title to the window
+self.screen = pygame.display.set_mode((x, y))    #  sets the size of the window   (creates the surface)
+
+pygame cannot create multiple windows
+
+pygame.event.get()   # gives the list of events, that have taken place since the last time the function was called
+
+pygame.QUIT   # one of the event.type
+
+pygame.display.flip()   # updates the screen
+
+if __name__ == '__main__':  # checks, if we opened the exact this file
+
+self.clock = pygame.time.Clock()   # adding timer
+
+self.clock.tick(60)  # sets FPS to 60 (this function can be called no more than 60 times a sec, otherwise sets a delay)
+
+self.bg_color = (x, y, z)  # just a tuple defining color
+self.screen.fill(bg_color)   # sets the background color to bg_color
