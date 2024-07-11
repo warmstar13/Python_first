@@ -410,6 +410,8 @@ def test_for_double(repeatable_func):
 
 @pytest.fixture(scope="module")   # creates one instance for all tests
 
+sys  # helps to import from other directory
+
 /////////////////////////////////////////////////////////
 
 pygame.init()    # activates the background settings
@@ -433,3 +435,10 @@ self.clock.tick(60)  # sets FPS to 60 (this function can be called no more than 
 
 self.bg_color = (x, y, z)  # just a tuple defining color
 self.screen.fill(bg_color)   # sets the background color to bg_color
+
+to add images we should write:
+self.image = pygame.image.load(path)
+
+self.rect = self.image.get_rect()  # gives the pos of rectangle
+
+blit(image, position)  # updates the screen inside (position = lefttop), also as a pos we could take a rect
