@@ -442,3 +442,25 @@ self.image = pygame.image.load(path)
 self.rect = self.image.get_rect()  # gives the pos of rectangle
 
 blit(image, position)  # updates the screen inside (position = lefttop), also as a pos we could take a rect
+
+pygame.KEYDOWN  # the button is tapped
+KEYUP checks when the button is stopped being tapped
+pygame.K_RIGHT  # the right button
+
+Important: for keys we use pygame.key, not pygame.type
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+Вот основные атрибуты, которые содержит pygame.Rect:
+
+Позиция и размеры:
+
+x и y: координаты верхнего левого угла прямоугольника.
+width и height: ширина и высота прямоугольника.
+size: кортеж (ширина, высота).
+Границы:
+
+top, bottom, left, right: соответствующие границы прямоугольника.
+topleft, bottomleft, topright, bottomright: координаты углов прямоугольника.
+midtop, midbottom, midleft, midright: координаты середины соответствующих сторон прямоугольника.
+center, centerx, centery: координаты центра прямоугольника.
