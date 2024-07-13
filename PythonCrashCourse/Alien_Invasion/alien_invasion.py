@@ -14,14 +14,20 @@ class AlienInvasion:
         self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
         self.settings.screen_height = self.screen.get_height()
         self.settings.screen_width = self.screen.get_width()
-        
+
         self.clock = pygame.time.Clock()
         self.ship = Ship(self)
+        
         # self.star = Star(self)
         pygame.display.set_caption("Alien Invasion")
  
     def run_game(self):
         """Start the main loop for the game."""
+        while self.settings.not_started:
+            for event in pygame.event.get():
+                if event.type == pygame.KEYDOWN:
+                    self.settings.not_started = False
+    
         while True:
             self._check_events()
             self.ship.update()
@@ -45,6 +51,10 @@ class AlienInvasion:
             self.ship.move_right = True
         elif event.key == pygame.K_LEFT:
             self.ship.move_left = True
+        elif event.key == pygame.K_UP:
+            self.ship.move_top = True
+        elif event.key == pygame.K_DOWN:
+            self.ship.move_bottom = True
         elif event.key == pygame.K_q:
             sys.exit()
 
@@ -53,6 +63,10 @@ class AlienInvasion:
             self.ship.move_right = False
         elif event.key == pygame.K_LEFT:
             self.ship.move_left = False
+        elif event.key == pygame.K_UP:
+            self.ship.move_top = False
+        elif event.key == pygame.K_DOWN:
+            self.ship.move_bottom = False
 
 
     def _update_screen(self):
@@ -67,3 +81,4 @@ if __name__ == '__main__':
     # Make a game instance, and run the game.
     ai = AlienInvasion()
     ai.run_game()
+            

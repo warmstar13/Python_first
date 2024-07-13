@@ -470,3 +470,5 @@ event.key = pygame.K_q  # q is tapped
 pygame.FULLSCREEN  # the flag, as well as pygame.RESIZABLE
 
 Размер окна (0,0) это полный экран   # simular to FULLSCREEN, but with unnecessary stuff
+
+https://www.pygame.org/docs/   # all docs about pygame
