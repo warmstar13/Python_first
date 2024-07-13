@@ -480,3 +480,5 @@ This is how it will be realized in my alien_invasion code:
 
 for bullet in self.bullets.sprites():
     bullet.draw_bullet()
+
+for bullet in self.bullets.copy():        #  the command to look at all instances of bullets
