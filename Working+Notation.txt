@@ -472,3 +472,11 @@ pygame.FULLSCREEN  # the flag, as well as pygame.RESIZABLE
 Размер окна (0,0) это полный экран   # simular to FULLSCREEN, but with unnecessary stuff
 
 https://www.pygame.org/docs/   # all docs about pygame
+
+pygame.draw.rect(self.screen, self.color, self.rect)  # drawing the rectangle
+
+self.bullets = pygame.sprite.Group()  # when update will be called, it will be called for every instance of a group
+This is how it will be realized in my alien_invasion code:
+
+for bullet in self.bullets.sprites():
+    bullet.draw_bullet()

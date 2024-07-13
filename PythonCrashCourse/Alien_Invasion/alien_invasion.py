@@ -3,6 +3,7 @@ import pygame
 from settings import Settings
 from ship import Ship
 from star import Star
+from bullet import Bullet
 
 class AlienInvasion:
     """Overall class to manage game assets and behavior."""
@@ -17,7 +18,7 @@ class AlienInvasion:
 
         self.clock = pygame.time.Clock()
         self.ship = Ship(self)
-        
+        self.bullets = pygame.sprite.Group()
         # self.star = Star(self)
         pygame.display.set_caption("Alien Invasion")
  
@@ -31,6 +32,7 @@ class AlienInvasion:
         while True:
             self._check_events()
             self.ship.update()
+            self.bullets.update()
             self._update_screen()
             self.clock.tick(60) 
 
@@ -45,6 +47,7 @@ class AlienInvasion:
 
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
+
     
     def _check_keydown_events(self, event):
         if event.key == pygame.K_RIGHT:
@@ -55,8 +58,14 @@ class AlienInvasion:
             self.ship.move_top = True
         elif event.key == pygame.K_DOWN:
             self.ship.move_bottom = True
+        elif event.key == pygame.K_SPACE:
+            self._fire_bullet()
         elif event.key == pygame.K_q:
             sys.exit()
+
+    def _fire_bullet(self):
+        new_bullet = Bullet(self)
+        self.bullets.add(new_bullet)
 
     def _check_keyup_events(self, event):
         if event.key == pygame.K_RIGHT:
@@ -73,6 +82,8 @@ class AlienInvasion:
         # Make the most recently drawn screen visible.
         self.screen.fill(self.settings.bg_color)
         self.ship.blitme()
+        for bullet in self.bullets.sprites():
+            bullet.draw_bullet()
         # self.star.blitme()
         pygame.display.flip()
 
