@@ -464,3 +464,9 @@ top, bottom, left, right: соответствующие границы прям
 topleft, bottomleft, topright, bottomright: координаты углов прямоугольника.
 midtop, midbottom, midleft, midright: координаты середины соответствующих сторон прямоугольника.
 center, centerx, centery: координаты центра прямоугольника.
+
+event.key = pygame.K_q  # q is tapped
+
+pygame.FULLSCREEN  # the flag, as well as pygame.RESIZABLE
+
+Размер окна (0,0) это полный экран   # simular to FULLSCREEN, but with unnecessary stuff
