@@ -19,16 +19,19 @@ class AlienInvasion:
         self.clock = pygame.time.Clock()
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
-        # self.star = Star(self)
+        self.star = Star(self)
         pygame.display.set_caption("Alien Invasion")
  
     def run_game(self):
         """Start the main loop for the game."""
+        
         while self.settings.not_started:
+            self.star.blitme()
+            pygame.display.flip()
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN:
                     self.settings.not_started = False
-    
+
         while True:
             self._check_events()
             self.ship.update()
@@ -92,7 +95,6 @@ class AlienInvasion:
         self.ship.blitme()
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
-        # self.star.blitme()
         pygame.display.flip()
 
         
