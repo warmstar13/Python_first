@@ -24,8 +24,8 @@ class AlienInvasion:
  
     def run_game(self):
         """Start the main loop for the game."""
-        
         while self.settings.not_started:
+            self.screen.fill(self.settings.preview_bg_color)
             self.star.blitme()
             pygame.display.flip()
             for event in pygame.event.get():

@@ -4,8 +4,9 @@ class Settings:
     def __init__(self):
         self.screen_width = 1200
         self.screen_height = 800
-        self.bg_color = (50, 50, 150)
+        self.bg_color = (20, 20, 70)
         self.not_started = True
+        self.preview_bg_color = (0, 0, 0)
 
         # ship settings
         self.ship_speed = 5.0
