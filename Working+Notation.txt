@@ -482,3 +482,9 @@ for bullet in self.bullets.sprites():
     bullet.draw_bullet()
 
 for bullet in self.bullets.copy():        #  the command to look at all instances of bullets
+
+/////////////////////////////////////////////////////////////////////////////
+
+fleet - флот
+
+self.aliens.draw(self.screen)     # draws aliens, with superior class
