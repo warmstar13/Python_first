@@ -488,3 +488,5 @@ for bullet in self.bullets.copy():        #  the command to look at all instance
 fleet - флот
 
 self.aliens.draw(self.screen)     # draws aliens, with superior class
+
+By default classes are not copied but moved
