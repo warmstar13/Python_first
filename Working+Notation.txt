@@ -490,3 +490,5 @@ fleet - флот
 self.aliens.draw(self.screen)     # draws aliens, with superior class
 
 By default classes are not copied but moved
+
+alien_width, alien_height = alien.rect.size  # alien.rect.size is a tuple

@@ -45,15 +45,23 @@ class AlienInvasion:
     def _create_fleet(self):
         # make an alien
         alien = Alien(self)
-        alien_width = alien.rect.width
+        alien_width, alien_height = alien.rect.size
 
         cur_x = alien_width
-        while cur_x < (self.settings.screen_width - 2 * alien_width):
-            new_alien = Alien(self)
-            new_alien.x = cur_x
-            new_alien.rect.x = cur_x
-            self.aliens.add(new_alien)
-            cur_x += 2 * alien_width
+        cur_y = alien_height
+        while cur_y < (self.settings.screen_height - 4 * alien_height):
+            while cur_x < (self.settings.screen_width - 2 * alien_width):
+                self._create_alien(cur_x, cur_y)
+                cur_x += 2 * alien_width
+            cur_y += 2 * alien_height
+            cur_x = alien_width
+
+    def _create_alien(self, cur_x, cur_y):
+        new_alien = Alien(self)
+        new_alien.x = cur_x
+        new_alien.rect.x = cur_x
+        new_alien.rect.y = cur_y
+        self.aliens.add(new_alien)
 
     def _check_events(self):
      # Watch for keyboard and mouse events.
