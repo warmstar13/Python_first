@@ -3,6 +3,9 @@ class Settings:
 
     def __init__(self):
         self.alien_speed = 1.
+        self.fleet_drop_speed = 10
+        # the number that will choose direction
+        self.alien_direction = 1
 
         self.screen_width = 1200
         self.screen_height = 800
@@ -19,3 +22,5 @@ class Settings:
         self.bullet_height = 15
         self.bullet_color = (255, 255, 0)
         self.bullets_allowed = 3
+
+        

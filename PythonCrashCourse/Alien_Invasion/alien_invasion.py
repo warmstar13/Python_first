@@ -5,7 +5,7 @@ from ship import Ship
 from star import Star
 from bullet import Bullet
 from alien import Alien
-from random import randint
+# from random import randint
 
 class AlienInvasion:
     """Overall class to manage game assets and behavior."""
@@ -53,12 +53,23 @@ class AlienInvasion:
         cur_y = alien_height
         while cur_y < (self.settings.screen_height - 4 * alien_height):
             while cur_x < (self.settings.screen_width - 2 * alien_width):
-                rand_x = randint(-100, 100)
-                rand_y = randint(-100, 100)
-                self._create_alien(cur_x + rand_x, cur_y + rand_y)
+                # rand_x = randint(-100, 100)
+                # rand_y = randint(-100, 100)
+                self._create_alien(cur_x, cur_y)
                 cur_x += 2 * alien_width
             cur_y += 2 * alien_height
             cur_x = alien_width
+
+    def _check_fleet_direction(self):
+        for alien in self.aliens.sprites():
+            if alien.check_edges():
+                self._change_fleet_direction()
+                break
+
+    def _change_fleet_direction(self):
+        for alien in self.aliens.sprites():
+            alien.rect.y += self.settings.fleet_drop_speed
+        self.settings.alien_direction *= -1
 
     def _create_alien(self, cur_x, cur_y):
         new_alien = Alien(self)
@@ -117,7 +128,10 @@ class AlienInvasion:
                 if bullet.rect.bottom <= 0:
                     self.bullets.remove(bullet)
 
+        collisions = pygame.sprite.groupcollide(self.bullets, self.aliens, True, True)
+
     def _update_aliens(self):
+        self._check_fleet_direction()
         self.aliens.update()
 
     def _update_screen(self):
