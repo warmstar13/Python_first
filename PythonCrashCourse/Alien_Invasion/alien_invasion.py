@@ -41,6 +41,7 @@ class AlienInvasion:
             self.ship.update()
             self._update_bullets()
             self._update_screen()
+            self._update_aliens()
             self.clock.tick(60) 
 
     def _create_fleet(self):
@@ -115,6 +116,9 @@ class AlienInvasion:
         for bullet in self.bullets.copy():
                 if bullet.rect.bottom <= 0:
                     self.bullets.remove(bullet)
+
+    def _update_aliens(self):
+        self.aliens.update()
 
     def _update_screen(self):
         # Make the most recently drawn screen visible.
