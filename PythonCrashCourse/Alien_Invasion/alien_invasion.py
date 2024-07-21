@@ -1,10 +1,14 @@
 import sys
+from time import sleep
+
 import pygame
+
 from settings import Settings
 from ship import Ship
 from star import Star
 from bullet import Bullet
 from alien import Alien
+from game_stats import GameStats
 # from random import randint
 
 class AlienInvasion:
@@ -14,10 +18,12 @@ class AlienInvasion:
         pygame.init()
         self.settings = Settings()
 
-        self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
+        # self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
+        self.screen = pygame.display.set_mode((1200, 800))
         self.settings.screen_height = self.screen.get_height()
         self.settings.screen_width = self.screen.get_width()
 
+        self.stats = GameStats(self)
         self.clock = pygame.time.Clock()
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
@@ -128,6 +134,9 @@ class AlienInvasion:
                 if bullet.rect.bottom <= 0:
                     self.bullets.remove(bullet)
 
+        self._check_bullet_alien_collision()
+
+    def _check_bullet_alien_collision(self):
         collisions = pygame.sprite.groupcollide(self.bullets, self.aliens, True, True)
 
         if not self.aliens:
@@ -137,6 +146,9 @@ class AlienInvasion:
     def _update_aliens(self):
         self._check_fleet_direction()
         self.aliens.update()
+
+        if pygame.sprite.spritecollideany(self.ship, self.aliens):
+            print("Alien Hit!")
 
     def _update_screen(self):
         # Make the most recently drawn screen visible.
