@@ -14,15 +14,14 @@ class Ship:
         self.image = pygame.transform.scale(self.image, (180, 200))
         
         self.rect = self.image.get_rect()
-        self.rect.midbottom = self.rect_screen.midbottom
-        self.x = float(self.rect.x)
-        self.y = float(self.rect.y)
         # Setting the moving of the ship
 
         self.move_right = False
         self.move_left = False
         self.move_top = False
         self.move_bottom = False
+
+        self.center_ship()
 
     def blitme(self):
         self.screen.blit(self.image, self.rect)
@@ -39,3 +38,8 @@ class Ship:
         
         self.rect.x = self.x
         self.rect.y = self.y
+
+    def center_ship(self):
+        self.rect.midbottom = self.rect_screen.midbottom
+        self.x = float(self.rect.x)
+        self.y = float(self.rect.y)

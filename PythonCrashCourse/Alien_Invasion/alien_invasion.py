@@ -16,6 +16,7 @@ class AlienInvasion:
     def __init__(self):
         """Initialize the game, and create game resources."""
         pygame.init()
+        self.game_active = True
         self.settings = Settings()
 
         # self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
@@ -44,10 +45,13 @@ class AlienInvasion:
 
         while True:
             self._check_events()
-            self.ship.update()
-            self._update_bullets()
+
+            if self.game_active:
+                self.ship.update()
+                self._update_bullets()
+                self._update_aliens()
+
             self._update_screen()
-            self._update_aliens()
             self.clock.tick(60) 
 
     def _create_fleet(self):
@@ -143,12 +147,35 @@ class AlienInvasion:
             self.bullets.empty()
             self._create_fleet()
 
+    def _ship_hit(self):
+        # Happens, when ship loses health
+        if self.stats.ships_left > 0: 
+            self.stats.ships_left -= 1
+
+            self.bullets.empty()
+            self.aliens.empty()
+
+            self._create_fleet()    
+            self.ship.center_ship()
+
+            sleep(0.5)
+        else:
+            self.game_active = False
+
+    def _check_aliens_bottom(self):
+        for alien in self.aliens.sprites():
+            if alien.rect.bottom >= self.settings.screen_height:
+                self._ship_hit()
+                break
+
     def _update_aliens(self):
         self._check_fleet_direction()
         self.aliens.update()
 
         if pygame.sprite.spritecollideany(self.ship, self.aliens):
-            print("Alien Hit!")
+            self._ship_hit()
+        
+        self._check_aliens_bottom()
 
     def _update_screen(self):
         # Make the most recently drawn screen visible.

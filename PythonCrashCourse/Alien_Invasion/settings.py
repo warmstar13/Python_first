@@ -2,7 +2,7 @@
 class Settings:
 
     def __init__(self):
-        self.alien_speed = 1.
+        self.alien_speed = 10.
         self.fleet_drop_speed = 10
         # the number that will choose direction
         self.alien_direction = 1
@@ -14,7 +14,7 @@ class Settings:
         self.preview_bg_color = (0, 0, 0)
 
         # ship settings
-        self.ship_speed = 5.0
+        self.ship_speed = 10.0
         self.ship_limit = 5
 
         # bullet settings
