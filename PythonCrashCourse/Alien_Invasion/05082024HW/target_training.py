@@ -2,6 +2,7 @@ import pygame
 from archer import Archer
 from target import Target
 from arrow import Arrow
+from button import Button
 import sys
 
 class TargetTraining:
@@ -9,17 +10,19 @@ class TargetTraining:
     def __init__(self):
         pygame.init()
 
-        self.game_active = True
+        self.game_active = False
 
         self.screen = pygame.display.set_mode((1200, 800))
         self.archer = Archer(self)
         self.target = Target(self)
+        self.button = Button(self, "Play")
         self.arrows = pygame.sprite.Group()
 
         self.clock = pygame.time.Clock()
 
         self.limit = 3
         self.throwed = 0
+        self.lost = 0
 
     def start(self):
         while True:
@@ -38,7 +41,13 @@ class TargetTraining:
             self.archer.y += 3
         self.target.change_pos()
         self.arrows.update()
+        for arr in self.arrows.copy():
+            if arr.rect.x > self.screen.get_width():
+                self.arrows.remove(arr)
+                self.lost += 1
         self._check_collisions()
+        if self.lost == self.limit:
+            self.game_active = False
 
     def _check_collisions(self):
         col_spr = pygame.sprite.spritecollideany(self.target, self.arrows)
@@ -63,6 +72,20 @@ class TargetTraining:
                     self.archer.down = False
                 elif event.key == pygame.K_w:
                     self.archer.up = False
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if self.game_active == False:
+                    cur_pos = pygame.mouse.get_pos()
+                    if self.button.rect.collidepoint(cur_pos):
+                        self.game_active = True
+                        self._reset()
+
+    def _reset(self):
+        self.arrows.empty()
+        self.throwed = 0
+        self.lost = 0
+        self.target.y = 50
+        self.target.coef = -2
+        self.archer.y = 400
 
     def _fire_arrow(self):
         if (self.limit > self.throwed):
@@ -77,6 +100,8 @@ class TargetTraining:
         self.target.blitme()
         for arr in self.arrows.sprites():
             arr.blitme()
+        if not self.game_active:
+            self.button.draw_button()
         pygame.display.flip()
 
 
