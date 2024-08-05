@@ -492,3 +492,15 @@ self.aliens.draw(self.screen)     # draws aliens, with superior class
 By default classes are not copied but moved
 
 alien_width, alien_height = alien.rect.size  # alien.rect.size is a tuple
+
+/////////////////////////////////////////////////////////////////////////
+
+font.render(message, antialiasing(Boolean), text_col, button_col)  #   превращает текст в картинку
+
+antialiasing - makes the edges of the text smoother
+
+pygame.mouse.get_pos()  # координаты мышки
+
+self.play_button.rect.collidepoint(mouse_pos)  # пересечение прямоугольника и точки
+
+pygame.mouse.set_visible(True)   # defines whether the mouse is visible or not
