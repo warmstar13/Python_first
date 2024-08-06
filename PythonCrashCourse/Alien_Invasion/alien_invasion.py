@@ -25,7 +25,15 @@ class AlienInvasion:
         self.screen = pygame.display.set_mode((1200, 800))
         self.settings.screen_height = self.screen.get_height()
         self.settings.screen_width = self.screen.get_width()
+        
         self.play_button = Button(self, "Play")
+        self.easy_button = Button(self, "Easy")
+        self.hard_button = Button(self, "Hard")
+        self.cheat_button = Button(self, "Cheat")
+        self.play_button.button_positioning("center")
+        self.easy_button.button_positioning(None, 300, 600)
+        self.hard_button.button_positioning(None, 600, 600)
+        self.cheat_button.button_positioning(None, 900, 600)
 
         self.stats = GameStats(self)
         self.clock = pygame.time.Clock()
@@ -45,7 +53,7 @@ class AlienInvasion:
         #     for event in pygame.event.get():
         #         if event.type == pygame.KEYDOWN:
         #             self.settings.not_started = False
-
+        
         while True:
             self._check_events()
 
@@ -53,7 +61,6 @@ class AlienInvasion:
                 self.ship.update()
                 self._update_bullets()
                 self._update_aliens()
-
             self._update_screen()
             self.clock.tick(60) 
 
@@ -106,13 +113,48 @@ class AlienInvasion:
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = pygame.mouse.get_pos()
                 self._check_play_button(mouse_pos)
+                self._check_settings_buttons(mouse_pos)
+
+    def _check_settings_buttons(self, mouse_pos):
+        easy_clicked = self.easy_button.rect.collidepoint(mouse_pos)
+        hard_clicked = self.hard_button.rect.collidepoint(mouse_pos)
+        cheat_clicked = self.cheat_button.rect.collidepoint(mouse_pos)
+         
+        if easy_clicked and not self.game_active:
+            self.stats.reset_stats()
+            self.settings.initialize_dynamic_settings()
+            self.settings.difficulty_chosen = True
+            self.easy_button.button_clicked()
+            self._update_screen()
+            sleep(0.2)
+            self.easy_button.button_unclicked()
+        elif hard_clicked and not self.game_active:
+            self.stats.reset_stats()
+            self.settings.initialize_dynamic_settings()
+            self.settings.difficulty_chosen = True
+            self.settings.hard_buff()
+            self.hard_button.button_clicked()
+            self._update_screen()
+            sleep(0.2)
+            self.hard_button.button_unclicked()
+        elif cheat_clicked and not self.game_active:
+            self.stats.reset_stats()
+            self.settings.initialize_dynamic_settings()
+            self.settings.difficulty_chosen = True
+            self.settings.cheat_buff()
+            self.cheat_button.button_clicked()
+            self._update_screen()
+            sleep(0.2)
+            self.cheat_button.button_unclicked()
+
 
     def _check_play_button(self, mouse_pos):
         
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.game_active:
-            self.stats.reset_stats()
-            self.settings.initialize_dynamic_settings()
+            if not self.settings.difficulty_chosen:
+                self.stats.reset_stats()
+                self.settings.initialize_dynamic_settings()     
             self.game_active = True
             pygame.mouse.set_visible(False)
 
@@ -193,6 +235,7 @@ class AlienInvasion:
 
             sleep(0.5)
         else:
+            self.settings.difficulty_chosen = False
             self.game_active = False
             pygame.mouse.set_visible(True)
 
@@ -221,6 +264,9 @@ class AlienInvasion:
             bullet.draw_bullet()
         if not self.game_active:
             self.play_button.draw_button()
+            self.easy_button.draw_button()
+            self.hard_button.draw_button()
+            self.cheat_button.draw_button()
 
         pygame.display.flip()
 
