@@ -52,7 +52,8 @@ class TargetTraining:
     def _check_collisions(self):
         col_spr = pygame.sprite.spritecollideany(self.target, self.arrows)
         if col_spr:
-            self.game_active = False
+            self._reset()
+            self.target.addspeed += 1
             
             
 

@@ -112,6 +112,7 @@ class AlienInvasion:
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.game_active:
             self.stats.reset_stats()
+            self.settings.initialize_dynamic_settings()
             self.game_active = True
             pygame.mouse.set_visible(False)
 
@@ -175,8 +176,9 @@ class AlienInvasion:
         collisions = pygame.sprite.groupcollide(self.bullets, self.aliens, True, True)
 
         if not self.aliens:
-            self.bullets.empty()
+            self.bullets.empty()    
             self._create_fleet()
+            self.settings.increase_speed()
 
     def _ship_hit(self):
         # Happens, when ship loses health
