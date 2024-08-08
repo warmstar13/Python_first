@@ -28,7 +28,12 @@ class AlienInvasion:
         self.settings.screen_width = self.screen.get_width()
         
         self._create_buttons()
+        self._create_objects()
         
+        pygame.display.set_caption("Alien Invasion")
+        self._create_fleet()
+
+    def _create_objects(self):
         self.stats = GameStats(self)
         self.sb = Scoreboard(self)
         self.clock = pygame.time.Clock()
@@ -36,8 +41,6 @@ class AlienInvasion:
         self.bullets = pygame.sprite.Group()
         self.aliens = pygame.sprite.Group()
         self.star = Star(self)
-        pygame.display.set_caption("Alien Invasion")
-        self._create_fleet()
 
     def _create_buttons(self):
         self.play_button = Button(self, "Play")
