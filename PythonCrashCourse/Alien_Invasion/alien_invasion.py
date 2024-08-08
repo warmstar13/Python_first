@@ -27,15 +27,8 @@ class AlienInvasion:
         self.settings.screen_height = self.screen.get_height()
         self.settings.screen_width = self.screen.get_width()
         
-        self.play_button = Button(self, "Play")
-        self.easy_button = Button(self, "Easy")
-        self.hard_button = Button(self, "Hard")
-        self.cheat_button = Button(self, "Cheat")
-        self.play_button.button_positioning("center")
-        self.easy_button.button_positioning(None, 300, 600)
-        self.hard_button.button_positioning(None, 600, 600)
-        self.cheat_button.button_positioning(None, 900, 600)
-
+        self._create_buttons()
+        
         self.stats = GameStats(self)
         self.sb = Scoreboard(self)
         self.clock = pygame.time.Clock()
@@ -45,6 +38,17 @@ class AlienInvasion:
         self.star = Star(self)
         pygame.display.set_caption("Alien Invasion")
         self._create_fleet()
+
+    def _create_buttons(self):
+        self.play_button = Button(self, "Play")
+        self.easy_button = Button(self, "Easy")
+        self.hard_button = Button(self, "Hard")
+        self.cheat_button = Button(self, "Cheat")
+        self.play_button.button_positioning("center")
+        self.easy_button.button_positioning(None, 300, 600)
+        self.hard_button.button_positioning(None, 600, 600)
+        self.cheat_button.button_positioning(None, 900, 600)
+
  
     def run_game(self):
         """Start the main loop for the game."""
