@@ -3,6 +3,7 @@ from time import sleep
 
 import pygame
 
+from pathlib import Path
 from settings import Settings
 from ship import Ship
 from star import Star
@@ -103,6 +104,11 @@ class AlienInvasion:
      # Watch for keyboard and mouse events.
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                # add the new highest score into the file saved_high_score.txt
+                
+                path = Path(__file__).parent / "saved_high_score.txt"
+                path.write_text(str(self.stats.high_score))
+                
                 sys.exit()
 
             elif event.type == pygame.KEYDOWN:
@@ -158,6 +164,7 @@ class AlienInvasion:
                 self.settings.initialize_dynamic_settings()  
             self.sb.prep_score()    
             self.sb.prep_level()
+            self.sb.prep_ships()
             self.game_active = True
             pygame.mouse.set_visible(False)
 
@@ -190,6 +197,10 @@ class AlienInvasion:
             self.ship.center_ship()
             self._create_fleet()
         elif event.key == pygame.K_q:
+            # add the new highest score into the file saved_high_score.txt
+                
+            path = Path(__file__).parent / "saved_high_score.txt"
+            path.write_text(str(self.stats.high_score))
             sys.exit()
 
     def _fire_bullet(self):
@@ -239,6 +250,7 @@ class AlienInvasion:
         # Happens, when ship loses health
         if self.stats.ships_left > 0: 
             self.stats.ships_left -= 1
+            self.sb.prep_ships()
 
             self.bullets.empty()
             self.aliens.empty()

@@ -1,10 +1,13 @@
+from pathlib import Path
+
 class GameStats:
     # Tracks statistics
 
     def __init__(self, ai_game):
         self.settings = ai_game.settings
         self.reset_stats()
-        self.high_score = 0
+        path = Path(__file__).parent / "saved_high_score.txt"
+        self.high_score = int(path.read_text())
     
     def reset_stats(self):
         self.ships_left = self.settings.ship_limit

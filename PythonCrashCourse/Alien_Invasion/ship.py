@@ -1,17 +1,19 @@
 import pygame
+from pygame.sprite import Sprite
 
 from pathlib import Path
 
-class Ship:
+class Ship(Sprite):
 
     def __init__(self, ai_game):
+        super().__init__()
         self.screen = ai_game.screen
         self.settings = ai_game.settings
         self.rect_screen = ai_game.screen.get_rect()
         
         self.path = Path(__file__).parent / "images/hand-drawn-spaceship-background.bmp"
         self.image = pygame.image.load(self.path)
-        self.image = pygame.transform.scale(self.image, (180, 200))
+        self.image = pygame.transform.scale(self.image, (90, 90))
         
         self.rect = self.image.get_rect()
         # Setting the moving of the ship
