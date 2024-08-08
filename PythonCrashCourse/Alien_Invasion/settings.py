@@ -21,7 +21,8 @@ class Settings:
         self.bullet_height = 25
         self.bullet_color = (255, 255, 0)
 
-        self.speedup_scale = 1.2
+        self.speedup_scale = 1.25
+        self.score_scale = 1.5
         self.initialize_dynamic_settings()
 
         self.difficulty_chosen = False
@@ -35,6 +36,7 @@ class Settings:
         self.bullet_width = 5
 
         self.alien_direction = 1
+        self.alien_points = 50
 
     def hard_buff(self):
         self.ship_speed = 5.0
@@ -44,7 +46,7 @@ class Settings:
 
     def cheat_buff(self):
         self.ship_speed = 10.
-        self.bullet_width = 100
+        self.bullet_width = 300
         self.bullet_speed = 10.
         self.bullets_allowed = 100
 
@@ -53,5 +55,7 @@ class Settings:
         self.bullet_speed *= self.speedup_scale
         self.alien_speed *= self.speedup_scale
 
+        self.alien_points = int(self.alien_points * self.score_scale)
+        # print(self.alien_points)
 
         

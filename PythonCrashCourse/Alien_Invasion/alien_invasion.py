@@ -10,6 +10,7 @@ from bullet import Bullet
 from alien import Alien
 from game_stats import GameStats
 from button import Button
+from scoreboard import Scoreboard
 # from random import randint
 
 class AlienInvasion:
@@ -18,7 +19,6 @@ class AlienInvasion:
         """Initialize the game, and create game resources."""
         pygame.init()
         self.game_active = False
-
         self.settings = Settings()
 
         # self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
@@ -36,6 +36,7 @@ class AlienInvasion:
         self.cheat_button.button_positioning(None, 900, 600)
 
         self.stats = GameStats(self)
+        self.sb = Scoreboard(self)
         self.clock = pygame.time.Clock()
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
@@ -154,7 +155,9 @@ class AlienInvasion:
         if button_clicked and not self.game_active:
             if not self.settings.difficulty_chosen:
                 self.stats.reset_stats()
-                self.settings.initialize_dynamic_settings()     
+                self.settings.initialize_dynamic_settings()  
+            self.sb.prep_score()    
+            self.sb.prep_level()
             self.game_active = True
             pygame.mouse.set_visible(False)
 
@@ -217,10 +220,20 @@ class AlienInvasion:
     def _check_bullet_alien_collision(self):
         collisions = pygame.sprite.groupcollide(self.bullets, self.aliens, True, True)
 
+        if collisions:
+            for aliens in collisions.values():
+                self.stats.score += self.settings.alien_points * len(aliens)
+            # print(collisions) 
+            self.sb.prep_score()
+            self.sb.check_high_score()
+
         if not self.aliens:
             self.bullets.empty()    
             self._create_fleet()
             self.settings.increase_speed()
+
+            self.stats.level += 1   
+            self.sb.prep_level()
 
     def _ship_hit(self):
         # Happens, when ship loses health
@@ -260,6 +273,7 @@ class AlienInvasion:
         self.screen.fill(self.settings.bg_color)
         self.aliens.draw(self.screen)
         self.ship.blitme()
+        self.sb.show_score()
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
         if not self.game_active:
