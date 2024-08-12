@@ -513,3 +513,7 @@ figure - диаграмма
 matplotlib.pyplot as plt   #  the library, that creates figures
 
 plt.style.available   # returns the available styles
+
+fig, ax = plt.subplots()  # fig - диаграмма, ax - отдельный график
+
+ax.scatter(x, y)   # точка
