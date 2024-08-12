@@ -504,3 +504,12 @@ pygame.mouse.get_pos()  # координаты мышки
 self.play_button.rect.collidepoint(mouse_pos)  # пересечение прямоугольника и точки
 
 pygame.mouse.set_visible(True)   # defines whether the mouse is visible or not
+
+///////////////////////////////////////////////////////////
+
+plot - график
+figure - диаграмма
+
+matplotlib.pyplot as plt   #  the library, that creates figures
+
+plt.style.available   # returns the available styles
