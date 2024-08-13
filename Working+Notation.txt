@@ -517,3 +517,14 @@ plt.style.available   # returns the available styles
 fig, ax = plt.subplots()  # fig - диаграмма, ax - отдельный график
 
 ax.scatter(x, y)   # точка
+
+ax.axis([0, 1100, 0, 1100000]) # ставит рамки по x и по y
+
+ax.ticklabel_format(style="plain") # стиль разметки (делений)
+
+color = (0, 0.8, 0.2)  # how to define custom colors in ax.scatter
+
+
+ax.scatter(x_values, y_values, c=y_values, cmap=plt.cm.Blues, s=20) # example of gradient
+
+omit - пропускать, не включать
