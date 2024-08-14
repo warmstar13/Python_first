@@ -530,3 +530,5 @@ ax.scatter(x_values, y_values, c=y_values, cmap=plt.cm.Blues, s=20) # example of
 omit - пропускать, не включать
 
 .subplots(figsize=(15, 9), dpi=128)   # the window size (dpi = pixels per inch (by default 100))
+
+import plotly.express as px    # для вывода в html

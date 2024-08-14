@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import plotly.express as px
 
 from random_walk import RandomWalk
 
