@@ -551,3 +551,17 @@ readable_content = json.dumps(all_eq_data, indent=4)  # dumps - превраща
 
 fig = px.scatter_geo(lat=lats, lon=lons, title=title)
 fig.show()   # for the map vision in html
+
+##################################################
+
+API - application programming interface
+
+import requests
+
+url = "https://api.github.com/search/repositories"
+url += "?q=language:python+sort:stars+stars:>10000"  # give additional requirements (q = query = запрос)
+
+headers = {"Accept": "application/vnd.github.v3+json"}
+r = requests.get(url, headers=headers)
+print(f"Status code: {r.status_code}")  # is equals 200 - everything is fine
+ 
