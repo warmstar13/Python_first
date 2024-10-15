@@ -546,3 +546,8 @@ from datetime import datetime    # library that is defining dates optimaly
 fig.autofmt_xdate()   # draws the dates diagonally
 
 ax.fill_between(dates, lows, highs, facecolor='blue', alpha=0.1)  # alpha - прозрачность
+
+readable_content = json.dumps(all_eq_data, indent=4)  # dumps - превращает словарь в string (intend - длина отступа в пробелах)
+
+fig = px.scatter_geo(lat=lats, lon=lons, title=title)
+fig.show()   # for the map vision in html
