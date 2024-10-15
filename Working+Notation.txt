@@ -532,3 +532,13 @@ omit - пропускать, не включать
 .subplots(figsize=(15, 9), dpi=128)   # the window size (dpi = pixels per inch (by default 100))
 
 import plotly.express as px    # для вывода в html
+
+////////////////////////////////////////////////////////////////
+
+reader = csv.reader(lines)  # парсит строки
+
+next() - дает следующий итератор
+
+for index, column_header in enumerate(header_row):    // gives index and the value
+
+from datetime import datetime    # library that is defining dates optimaly
