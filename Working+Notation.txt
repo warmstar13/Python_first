@@ -542,3 +542,7 @@ next() - дает следующий итератор
 for index, column_header in enumerate(header_row):    // gives index and the value
 
 from datetime import datetime    # library that is defining dates optimaly
+
+fig.autofmt_xdate()   # draws the dates diagonally
+
+ax.fill_between(dates, lows, highs, facecolor='blue', alpha=0.1)  # alpha - прозрачность
