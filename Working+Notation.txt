@@ -565,3 +565,7 @@ headers = {"Accept": "application/vnd.github.v3+json"}
 r = requests.get(url, headers=headers)
 print(f"Status code: {r.status_code}")  # is equals 200 - everything is fine
  
+In Plotly, you can hover the cursor over an individual bar to show the information the bar represents.
+This is commonly called a tooltip
+
+“Plotly Express in Python,” at https://plotly.com/python/plotly-express
