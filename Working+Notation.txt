@@ -569,3 +569,12 @@ In Plotly, you can hover the cursor over an individual bar to show the informati
 This is commonly called a tooltip
 
 “Plotly Express in Python,” at https://plotly.com/python/plotly-express
+
+///////////////////////////////////////////////////////////
+
+python3 -m venv ll_env
+source ll_env/bin/activate    # this is how I created virtual environment
+
+django-admin startproject ll_project .  # creates the basics for the project
+
+ python manage.py runserver  # activates the program
