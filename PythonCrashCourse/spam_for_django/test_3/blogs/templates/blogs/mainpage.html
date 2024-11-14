@@ -1,0 +1,17 @@
+{%extends "blogs/base.html"%}
+
+{%block content%}
+    <h1>All Posts</h1>
+    <ul>
+        {% for theme in all_theme %}
+            <li>
+                <h4>{{theme.theme}}</h4>
+                <p>{{theme.text}}</p>
+                <p>{{theme.date_added}}</p>
+                <p><a href = "{% url 'blogs:editing_post' theme.id%}">Edit this post</a></p>
+            </li>
+        {% empty %}
+            <li>There are no posts yet.</li>
+        {% endfor%}
+    </ul>
+{%endblock content%}
