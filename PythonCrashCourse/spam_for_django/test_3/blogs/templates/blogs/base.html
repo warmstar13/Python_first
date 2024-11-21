@@ -1,5 +1,21 @@
 <h5> Some links </h5>
-<p><a href="{% url 'blogs:mainpage'%}">Main Page</a></p>
-<p><a href="{% url 'blogs:making_blog'%}">Create a new blog</a></p>
-<p><a href="{% url 'blogs:making_post'%}">Create a new post</a></p>
+<p>
+    <a href="{% url 'blogs:mainpage'%}">Main Page</a> -
+    <a href="{% url 'blogs:making_blog'%}">Create a new blog</a> -
+    <a href="{% url 'blogs:making_post'%}">Create a new post</a> -
+    {%if user.is_authenticated%}
+    Hello, {{ user.username }}.
+    {% else %}
+    <a href="{% url 'accounts:login'%}">Log in</a> -
+    <a href="{% url 'accounts:register'%}">Register</a> -
+    {% endif %}
+</p>
 {%block content%}{% endblock content%}
+
+{%if user.is_authenticated%}
+    <hr />
+    <form action="{%url 'accounts:logout'%}" method="post">
+        {%csrf_token%}
+        <button name="submit">Log out</button>
+    </form>
+{%endif%}
