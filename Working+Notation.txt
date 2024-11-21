@@ -578,3 +578,54 @@ source ll_env/bin/activate    # this is how I created virtual environment
 django-admin startproject ll_project .  # creates the basics for the project
 
  python manage.py runserver  # activates the program
+
+python manage.py startapp learning_logs   # gives infrastructure needed to create an app
+
+python manage.py createsuperuser # creates admin
+
+ <a href="{% url 'learning_logs:index' %}">Learning Log</a>
+
+1 {% extends 'learning_logs/base.html' %}
+2 {% block content %}
+3 {% endblock content %}
+
+
+{% for item in list %}
+ do something with each item
+{% endfor %}
+
+ 
+a vertical line (|) represents a template filter—
+a function that modifies the value in a template variable during the rendering
+process
+
+<p>{{ entry.date_added|date:'M d, Y H:i' }}</p>
+<p>{{ entry.text|linebreaks }}</p>
+
+///////////////////////////////////////////////////
+
+path('', include('django.contrib.auth.urls'))
+
+LOGIN_REDIRECT_URL = 'learning_logs:index'
+
+from django.shortcuts import render, redirect
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+
+{%if user.is_authenticated%}
+    Hello, {{ user.username }}.
+{% else %}
+    <a href="{% url 'accounts:login'%}">Log in</a> -
+    <a href="{% url 'accounts:register'%}">Register</a> -
+{% endif %}
+
+@login_required
+def topics(request):
+
+from django.contrib.auth.models import User
+User.objects.all()
+
+python manage.py flush   # сотрет все данные из баз
+
+    if topic.owner != request.user:
+        raise Http404
