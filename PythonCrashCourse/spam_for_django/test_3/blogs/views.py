@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.http import Http404
 
 from  .models import Theme, Individual_Post
 
@@ -10,6 +12,7 @@ def mainpage(request):
     context = {"all_theme": all_theme}
     return render(request, 'blogs/mainpage.html', context)
 
+@login_required
 def making_blog(request):
     if request.method != "POST":
         form = BlogForm()
@@ -21,6 +24,7 @@ def making_blog(request):
     context = {"form": form}
     return render(request, 'blogs/making_blog.html', context)
 
+@login_required
 def making_post(request):
     # blog = Theme.objects.get(id=blog_id)
 
@@ -35,9 +39,12 @@ def making_post(request):
 
     return render(request, 'blogs/making_post.html', context)
 
+@login_required
 def editing_post(request, post_id):
 
     post = Individual_Post.objects.get(id=post_id)
+    if post.owner != request.user:
+        raise Http404
 
     if request.method != 'POST':
         form = PostForm(instance=post)
