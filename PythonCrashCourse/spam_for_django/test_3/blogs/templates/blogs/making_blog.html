@@ -1,11 +1,15 @@
 {%extends "blogs/base.html"%}
+{% load django_bootstrap5%}
+
+{% block page_header%}
+    <h2>A new blog</h2>
+{% endblock page_header%}
 
 {% block content %}
-<h2>A new blog</h2>
 
 <form action="{% url 'blogs:making_blog'%}" method="post">
     {% csrf_token %}
-    {{form.as_div}}
-    <button name="submit">Add new blog</button>
+    {%bootstrap_form form%}
+    {%bootstrap_button button_type='submit' content='Add new blog'%}
 </form>
 {% endblock content %}

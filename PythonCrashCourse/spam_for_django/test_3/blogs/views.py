@@ -33,7 +33,9 @@ def making_post(request):
     else:
         form = PostForm(data=request.POST)
         if form.is_valid():
-            form.save()
+            x = form.save(commit=False)
+            x.owner = request.user
+            x.save()
             return redirect('blogs:mainpage')
     context = {'form': form}
 

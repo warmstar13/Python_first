@@ -1,17 +1,24 @@
 {%extends "blogs/base.html"%}
 
+{% block page_header %}
+    <h1>All posts</h1>
+{% endblock page_header %}
+
 {%block content%}
-    <h1>All Posts</h1>
-    <ul>
-        {% for theme in all_theme %}
-            <li>
-                <h4>{{theme.theme}}</h4>
-                <p>{{theme.text}}</p>
-                <p>{{theme.date_added}}</p>
-                <p><a href = "{% url 'blogs:editing_post' theme.id%}">Edit this post</a></p>
-            </li>
-        {% empty %}
-            <li>There are no posts yet.</li>
-        {% endfor%}
-    </ul>
+    {% for theme in all_theme %}
+        <div class="card">
+            <h4 class="card-header">{{theme.theme}}
+
+                
+                <small>
+                    ({{theme.date_added}})<br />
+                    <a href = "{% url 'blogs:editing_post' theme.id%}">Edit this post</a>
+                </small>
+            </h4>
+            <div class="card-body">{{theme.text|linebreaks}}</div>
+        </div>
+    {% empty %}
+        <p>There are no posts yet.</p>
+    {% endfor%}
+    
 {%endblock content%}
