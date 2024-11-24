@@ -629,3 +629,9 @@ python manage.py flush   # сотрет все данные из баз
 
     if topic.owner != request.user:
         raise Http404
+
+///////////////////////////////////////////////////////
+
+pip install django-bootstrap5
+
+&raquo;     # looks like >>
