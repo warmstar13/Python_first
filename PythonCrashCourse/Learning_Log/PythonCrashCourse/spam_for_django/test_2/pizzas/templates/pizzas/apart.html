@@ -1,0 +1,12 @@
+{% extends "pizzas/base.html"%}
+
+{%block content%}
+    <p>{{piz_name.name}} consists of:<p>
+    <ul>
+        {% for top in figure%}
+            <li>{{top.name}}</li>
+        {% empty %}
+            <li>This pizza is a miracle and contains nothing</li>
+        {% endfor %}
+    </ul>
+{%endblock content%}
