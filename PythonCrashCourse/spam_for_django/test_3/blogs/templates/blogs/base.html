@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="uft-8">
+        <meta name="viewport">
+        <title>Blogs</title>
+
+        {% load django_bootstrap5%}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-md bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'blogs:mainpage'%}">Main page</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>    
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'blogs:making_blog'%}">
+                                Create a new blog
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'blogs:making_post'%}">
+                                Create a new post
+                            </a>    
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav ms-auto">
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <span class="navbar-text me-2">
+                                Hello, {{ user.username}}.
+                            </span>
+                        </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'accounts:login'%}">Log in</a>
+                            </li>
+                            <li class="nav-register">
+                                <a class="nav-link" href="{%url 'accounts:register'%}">Register</a>
+                            </li>
+                        {% endif%}
+                    </ul>
+
+                    {% if user.is_authenticated %}
+                        <form action="{% url 'accounts:logout'%}" method="post">
+                            {%csrf_token%}
+                            <button name="submit" class="btn btn-outline-secondary">
+                                Log out
+                            </button>
+                        </form>
+                    {% endif%}
+                </div>
+            </div>
+        </nav>
+
+        <main class="container">
+            <div class="pb-2 mb-2 border-bottom">
+                {%block page_header%}{% endblock page_header %}
+            </div>
+            <div>
+                {% block content%}{% endblock content %}
+            </div>
+        </main>
+    </body>
+</html>
+
+<!-- <h5> Some links </h5>
+<p>
+    <a href="{% url 'blogs:mainpage'%}">Main Page</a> -
+    <a href="{% url 'blogs:making_blog'%}">Create a new blog</a> -
+    <a href="{% url 'blogs:making_post'%}">Create a new post</a> -
+    {%if user.is_authenticated%}
+    Hello, {{ user.username }}.
+    {% else %}
+    <a href="{% url 'accounts:login'%}">Log in</a> -
+    <a href="{% url 'accounts:register'%}">Register</a> -
+    {% endif %}
+</p>
+
+{%if user.is_authenticated%}
+    <hr />
+    <form action="{%url 'accounts:logout'%}" method="post">
+        {%csrf_token%}
+        <button name="submit">Log out</button>
+    </form>
+{%endif%} -->
