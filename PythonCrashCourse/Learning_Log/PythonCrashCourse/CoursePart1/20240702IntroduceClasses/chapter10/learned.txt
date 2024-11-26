@@ -1,3 +1,0 @@
-I have learned much about python!
-I understood how the classes are working
-In the nearest future, I will program my first project
