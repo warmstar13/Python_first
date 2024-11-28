@@ -1,3 +1,5 @@
 [submodule "PythonCrashCourse/Learning_Log"]
 	path = PythonCrashCourse/Learning_Log
 	url = a3luhfzhb33ow@git.ch-1.platform.sh:a3luhfzhb33ow.git
+	branch = master
+
